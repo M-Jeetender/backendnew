@@ -2,11 +2,15 @@ const fs = require('fs');
 // const index = fs.readFileSync('index.html', 'utf-8');
 const path = require('path');
 const data = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../data.json'), 'utf-8'));
-const users = data.users;
+
+
+const model = require('../model/user')
+const mongoose = require('mongoose');
+const User = model.User;
 
 exports.createUser = (req, res) => {
-  console.log(req.body);
-  users.push(req.body);
+  const user = new User(req.body);
+  user.save();
   res.status(201).json(req.body);
 };
 

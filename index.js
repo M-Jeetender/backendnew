@@ -7,7 +7,8 @@ const server = express();
 const path = require('path');
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
-console.log('env',process.env.DB_PASSWORD)
+
+
 
 //db connection
 main().catch(err => console.log(err));
